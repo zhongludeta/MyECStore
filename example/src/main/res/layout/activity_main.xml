@@ -7,13 +7,16 @@
     android:layout_height="match_parent"
     tools:context="com.csg.zhong.myecstore.MainActivity">
 
-    <TextView
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/icon_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:textSize="30sp"
+        android:text="{icon-ali-pay}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText"/>
 
 </android.support.constraint.ConstraintLayout>

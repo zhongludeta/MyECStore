@@ -1,22 +1,23 @@
 package com.csg.zhong.myecstore;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.app.Application;
 
 import com.csg.zhong.latte.app.Latte;
 import com.csg.zhong.latte.ec.icon.FontEcModule;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by 王修智 on 2017-07-18-0018.
+ */
 
+public class ExampleApp extends Application {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate() {
+        super.onCreate();
         Latte.init(this)//
                 .withIcon(new FontAwesomeModule())//
                 .withIcon(new FontEcModule())//
                 .withApiHost("http://127.0.0.1")//
                 .configure();
-        setContentView(R.layout.activity_main);
     }
 }

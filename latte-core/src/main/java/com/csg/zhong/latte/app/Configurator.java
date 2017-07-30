@@ -112,7 +112,7 @@ public class Configurator {
      * @return 具体配置项对象
      */
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getLatteConfig(Enum<ConfigType> key) {
         checkConfiguration();
         return (T) LATTE_CONFIGS.get(key.name());
     }

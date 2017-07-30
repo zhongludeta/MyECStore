@@ -12,6 +12,7 @@ public final class Latte {
 
     /**
      * 配置项初始化方法
+     *
      * @param context 上下文
      * @return 配置类型对象
      */
@@ -22,10 +23,15 @@ public final class Latte {
 
     /**
      * 初始化配置项，顺便返回配置项内各项内容的集合
+     *
      * @return 配置项内各项内容的HashMap对象
      */
-    private static HashMap<String, Object> getConfigurations() {
+    public static HashMap<String, Object> getConfigurations() {
         return Configurator.getInstance().getLatteConfigs();
+    }
+
+    public static <T> T getConfiguration(Enum<ConfigType> key) {
+        return Configurator.getInstance().getLatteConfig(key);
     }
 
 }

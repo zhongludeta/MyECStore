@@ -4,6 +4,7 @@ import com.joanzapata.iconify.Icon;
 
 /**
  * Created by 王修智 on 2017-07-15-0015.
+ *
  */
 
 public enum EcIcons implements Icon {

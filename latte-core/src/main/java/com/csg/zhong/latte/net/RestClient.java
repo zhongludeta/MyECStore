@@ -1,10 +1,14 @@
 package com.csg.zhong.latte.net;
 
+import android.content.Context;
+
 import com.csg.zhong.latte.net.callback.IError;
 import com.csg.zhong.latte.net.callback.IFailure;
 import com.csg.zhong.latte.net.callback.IRequest;
 import com.csg.zhong.latte.net.callback.ISuccess;
 import com.csg.zhong.latte.net.callback.RequestCallbacks;
+import com.csg.zhong.latte.ui.LatteLoader;
+import com.csg.zhong.latte.ui.LoaderStyle;
 
 import java.util.WeakHashMap;
 
@@ -27,6 +31,8 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final LoaderStyle LOADER_STYLE;
+    private final Context CONTEXT;
 
     /**
      * 构造方法，初始化私有常量。
@@ -45,7 +51,9 @@ public class RestClient {
                ISuccess success,//
                IFailure failure,//
                IError error,//
-               RequestBody body) {
+               RequestBody body,//
+               LoaderStyle loaderStyle,//
+               Context context) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -53,6 +61,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.LOADER_STYLE = loaderStyle;
+        this.CONTEXT = context;
     }
 
     public static RestClientBuilder builder() {
@@ -65,6 +75,10 @@ public class RestClient {
 
         if (REQUEST != null) {
             REQUEST.onRequestStart();
+        }
+
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(LOADER_STYLE, CONTEXT);
         }
 
         switch (method) {
@@ -91,7 +105,7 @@ public class RestClient {
     }
 
     private Callback<String> getRequestCallback() {
-        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR);
+        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR, LOADER_STYLE);
     }
 
     public final void get() {

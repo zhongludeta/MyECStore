@@ -16,6 +16,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RestCreator {
 
+    private static final int TIME_OUT = 60;
+
     private static final class ParamsHolder {
         private static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     }
@@ -23,8 +25,6 @@ public class RestCreator {
     public static WeakHashMap<String, Object> getParams() {
         return ParamsHolder.PARAMS;
     }
-
-    private static final int TIME_OUT = 60;
 
     public static RestService getRestService() {
         return RestServiceHolder.REST_SERVICE;

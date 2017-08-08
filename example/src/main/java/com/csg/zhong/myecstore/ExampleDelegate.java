@@ -3,7 +3,6 @@ package com.csg.zhong.myecstore;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.Toast;
 
 import com.csg.zhong.latte.delegates.LatteDelegate;
 import com.csg.zhong.latte.net.RestClient;
@@ -27,12 +26,14 @@ public class ExampleDelegate extends LatteDelegate {
     }
 
     private void testRestClient() {
-        RestClient.builder().url("http://news.baidu.com").success(new ISuccess() {
-            @Override
-            public void onSuccess(String response) {
-                Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
-            }
-        }).failure(new IFailure() {
+        RestClient.builder().url("http://news.baidu.com")//
+                .loader(getContext())//
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                    }
+                }).failure(new IFailure() {
             @Override
             public void onFailure() {
 

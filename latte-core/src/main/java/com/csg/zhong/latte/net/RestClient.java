@@ -7,6 +7,7 @@ import com.csg.zhong.latte.net.callback.IFailure;
 import com.csg.zhong.latte.net.callback.IRequest;
 import com.csg.zhong.latte.net.callback.ISuccess;
 import com.csg.zhong.latte.net.callback.RequestCallbacks;
+import com.csg.zhong.latte.net.download.DownloadHandler;
 import com.csg.zhong.latte.ui.LatteLoader;
 import com.csg.zhong.latte.ui.LoaderStyle;
 
@@ -33,6 +34,9 @@ public class RestClient {
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final RequestBody BODY;
     private final LoaderStyle LOADER_STYLE;
     private final Context CONTEXT;
@@ -55,7 +59,7 @@ public class RestClient {
                ISuccess success,//
                IFailure failure,//
                IError error,//
-               RequestBody body,//
+               String downloadDir, String extension, String name, RequestBody body,//
                LoaderStyle loaderStyle,//
                Context context,//
                File file) {
@@ -65,6 +69,9 @@ public class RestClient {
         this.SUCCESS = success;
         this.FAILURE = failure;
         this.ERROR = error;
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION = extension;
+        this.NAME = name;
         this.BODY = body;
         this.FILE = file;
         this.LOADER_STYLE = loaderStyle;
@@ -155,6 +162,15 @@ public class RestClient {
 
     public final void delete() {
         request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, SUCCESS, FAILURE, ERROR, DOWNLOAD_DIR, EXTENSION, NAME)//
+                .handleDownload();
     }
 
 }

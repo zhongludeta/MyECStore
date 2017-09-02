@@ -26,12 +26,12 @@ public class ExampleDelegate extends LatteDelegate {
     }
 
     private void testRestClient() {
-        RestClient.builder().url("http://news.baidu.com")//
+        RestClient.builder().url("http://s1.music.126.net/download/android/CloudMusic_official_4.1.3_193341.apk")//
                 .loader(getContext())//
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                        //                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 }).failure(new IFailure() {
             @Override
@@ -43,7 +43,7 @@ public class ExampleDelegate extends LatteDelegate {
             public void onError(int code, String msg) {
 
             }
-        }).build().get();
+        }).name("CloudMusic_official_4.1.3_193341.apk").build().download();
 
     }
 

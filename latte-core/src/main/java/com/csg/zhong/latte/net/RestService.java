@@ -21,7 +21,7 @@ import retrofit2.http.Url;
 
 /**
  * Created by 王修智 on 2017-07-18-0018.
- * retrofit通用方法封装接口
+ * Retrofit通用方法封装接口
  */
 
 public interface RestService {

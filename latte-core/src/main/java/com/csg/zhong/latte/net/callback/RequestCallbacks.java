@@ -65,7 +65,7 @@ public class RequestCallbacks implements Callback<String> {
                 public void run() {
                     LatteLoader.stopLoading();
                 }
-            }, 3000);
+            }, 1000);
         }
     }
 

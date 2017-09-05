@@ -5,9 +5,10 @@ package com.csg.zhong.latte.app;
  * <p>为配置信息类型提供的枚举类</p>
  */
 
-public enum ConfigType {
+public enum ConfigKeys {
     API_HOST,
     APPLICATION_CONTEXT,
     CONFIG_READY,
-    ICON
+    ICON,
+    INTERCEPTOR
 }

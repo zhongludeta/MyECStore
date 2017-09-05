@@ -59,7 +59,10 @@ public class RestClient {
                ISuccess success,//
                IFailure failure,//
                IError error,//
-               String downloadDir, String extension, String name, RequestBody body,//
+               String downloadDir,//
+               String extension,//
+               String name,//
+               RequestBody body,//
                LoaderStyle loaderStyle,//
                Context context,//
                File file) {

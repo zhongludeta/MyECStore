@@ -17,25 +17,35 @@ public final class Latte {
      * @return 配置类型对象
      */
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
+        getConfigurations().put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
     /**
-     * 初始化配置项，顺便返回配置项内各项内容的集合
+     * 返回配置项内各项内容的集合
      *
      * @return 配置项内各项内容的HashMap对象
      */
-    public static HashMap<String, Object> getConfigurations() {
+    public static HashMap<Object, Object> getConfigurations() {
         return Configurator.getInstance().getLatteConfigs();
     }
 
-    public static <T> T getConfiguration(Enum<ConfigType> key) {
+    /**
+     * 按枚举对象返回配置项内各项内容的集合
+     * @param key 枚举对象
+     * @param <T> 返回配置项类型的泛型
+     * @return 返回的配置项
+     */
+    public static <T> T getConfiguration(Enum<ConfigKeys> key) {
         return Configurator.getInstance().getLatteConfig(key);
     }
 
+    /**
+     * 获取APP的Application对象
+     * @return
+     */
     public static Context getApplicationContext() {
-        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 
 }

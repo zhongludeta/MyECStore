@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.csg.zhong.latte.app.Latte;
 import com.csg.zhong.latte.ec.icon.FontEcModule;
+import com.csg.zhong.latte.net.interceptor.DebugInterceptor;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -18,6 +19,7 @@ public class ExampleApp extends Application {
                 .withIcon(new FontAwesomeModule())//
                 .withIcon(new FontEcModule())//
                 .withApiHost("http://127.0.0.1")//
+                .withInterceptor(new DebugInterceptor("index", R.raw.test))//
                 .configure();
     }
 }
